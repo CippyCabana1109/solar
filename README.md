@@ -59,10 +59,4 @@ See outputs/dissertation_assumptions_and_limitations.txt for the full list, incl
 
 ## Author
 
-Cyprian Kabana 
-
-Once saved, push it:
-
-git add .
-git commit -m "Update README with run_all.py instructions"
-git push
+Cyprian Kabana
