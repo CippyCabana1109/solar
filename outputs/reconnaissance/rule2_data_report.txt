@@ -1,0 +1,48 @@
+RULE 2 PRE-MODELLING DATA REPORT
+Generated from confirmed sources; master.csv has not been built.
+
+PRODUCTION: individual weekly exports (duplicates excluded by file hash)
+Rows: 145320
+Verified date range: 2023-12-30 00:00:00 to 2025-03-21 23:55:00
+Blank non-time cells: 557634
+Rows with all available inverter power fields literally equal to zero: 9703
+Rows containing blanks are excluded from the all-zero count; blanks are not converted to zero.
+Largest production blank concentrations (total; daytime / nighttime):
+  Strathmore University- Production - Power (W): 59338; 2161 / 57177
+  Strathmore University- Production - Energy (Wh): 58428; 2142 / 56286
+  Inv24- AC Production - Energy (Wh): 14112; 7644 / 6468
+  Inv24- AC Production - Power (W): 14112; 7644 / 6468
+  Inv25- AC Production - Energy (Wh): 14112; 7644 / 6468
+  Inv25- AC Production - Power (W): 14112; 7644 / 6468
+  Inv19- AC Production - Energy (Wh): 12388; 5937 / 6451
+  Inv19- AC Production - Power (W): 12388; 5937 / 6451
+  Inv18- AC Production - Energy (Wh): 12319; 5866 / 6453
+  Inv18- AC Production - Power (W): 12319; 5866 / 6453
+Resolution: 5 minutes; units: inverter power W and energy Wh; timezone: not encoded in files.
+
+LOCAL WEATHER: February humidity/temperature weekly exports
+Rows: 8064
+Verified date range: 2025-02-01 00:00:00 to 2025-02-28 23:55:00
+Blank non-time cells: 14784
+Resolution: 5 minutes; units: humidity %, temperature C; timezone: not encoded in files.
+
+NASA POWER: existing source through January
+Rows: 9528
+Verified date range: 2024-01-01 00:00:00 to 2025-01-31 23:00:00
+Blank non-time cells: 0
+NASA -999 fill values: 17768
+Night-time zero irradiance rows: 2380
+Resolution: hourly; units: irradiance Wh/m2, temperature C, humidity %, wind speed m/s.
+Time standard: validated as LST by exact January 2025 matches for temperature, humidity, and wind against the API LST response; UTC does not match.
+
+NASA POWER API FILL-IN: February 2025
+Rows: 672
+Verified date range: 2025-02-01 00:00:00 to 2025-02-28 23:00:00
+API fill values (-999): 0
+Night-time zero irradiance rows: 336
+Resolution: hourly; time standard: LST; units: NASA POWER native units.
+Coordinates: latitude -1.31, longitude 36.81; API response preserved separately under data/external/.
+
+WIND DECISION
+Local February Week 1 wind is genuinely hourly (168 rows). Weeks 2-4 are 5-minute grids with only 168 populated hourly values each.
+Local wind is therefore excluded from the synchronized source; NASA POWER WS10M is used for consistent hourly wind coverage.

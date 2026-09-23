@@ -1,0 +1,8 @@
+data/raw/
+data/external/
+data/processed/*.csv
+models/
+pycache/
+*.pyc
+.venv/
+venv/

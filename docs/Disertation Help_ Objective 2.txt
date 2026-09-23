@@ -1,0 +1,97 @@
+Objective 2 — Quantification of Next-Day Forecast Uncertainty
+
+Objective of the Analysis
+
+Quantify the uncertainty associated with the best-performing next-day
+solar PV forecasting model identified under Objective 1, using the
+differences between forecast and actual measured PV generation.
+
+Data
+
+- Actual measured PV generation for the out-of-sample evaluation period.
+
+- Corresponding next-day predictions from the 1st-ranked forecasting
+  model from Objective 1.
+
+- Forecast and actual values must correspond to the same timestamps and
+  forecasting intervals.
+
+- Use only out-of-sample next-day forecasts when estimating uncertainty.
+
+This follows the dissertation's distinction between the point forecast
+and the uncertainty surrounding that forecast.
+
+Analysis to Perform
+
+First calculate the forecast error for every observation:
+
+e_(t) = P_(actual, t) − P_(forecast, t)
+
+The distribution of these errors shall then be analysed to establish the
+magnitude and direction of the uncertainty associated with the selected
+forecasting model.
+
+The analysis should quantify:
+
+- Mean forecast error/bias (MBE) — establishes whether the model
+  systematically over- or under-predicts generation.
+
+- Standard deviation of forecast errors (σ_(e)) — measures the
+  dispersion of actual generation around the forecast.
+
+- Error percentiles/quantiles — establishes empirically how large
+  forecast deviations are at selected confidence levels.
+
+- Prediction/uncertainty bounds — determine the range within which
+  actual generation can reasonably be expected to occur around a
+  next-day forecast.
+
+Where appropriate, uncertainty should also be expressed relative to
+forecast generation or plant capacity (%), so that the result can
+subsequently be applied to different forecast quantities.
+
+Required Outputs
+
+1.  Forecast-error dataset for the selected model.
+
+2.  Summary statistics of the forecast errors.
+
+3.  Forecast-error distribution/histogram.
+
+4.  Actual versus forecast generation showing the derived uncertainty
+    bounds.
+
+5.  A table reporting the uncertainty associated with the selected
+    next-day forecasting model.
+
+The principal result for Objective 2 should take a form similar to:
+
+  -----------------------------------------------------------------
+  Uncertainty Measure    Result    Interpretation
+  ---------------------- --------- --------------------------------
+  Mean Error / Bias      W         Direction of systematic forecast
+                                   error
+
+  Error Standard         W         Typical dispersion around
+  Deviation                        forecast
+
+  Relative Uncertainty   %         Uncertainty relative to
+                                   forecast/capacity
+
+  80% uncertainty        to        Expected forecast-error range
+  interval                         
+
+  90% uncertainty        to        Expected forecast-error range
+  interval                         
+
+  95% uncertainty        to        Expected forecast-error range
+  interval                         
+  -----------------------------------------------------------------
+
+Final Goal
+
+Determine a quantitative and empirically derived measure of forecast
+uncertainty for the best-performing next-day forecasting model. The
+uncertainty measure shall be carried forward together with the next-day
+forecast into Objective 3, where market commitment quantities will be
+determined while considering forecast uncertainty and imbalance costs.

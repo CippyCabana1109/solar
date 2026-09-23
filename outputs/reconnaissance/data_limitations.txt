@@ -1,0 +1,17 @@
+The January 2024 to January 2025 production observations in the provisional
+dataset use the plant-level Strathmore aggregate production columns. The
+February and March 2025 exports did not contain a certified plant-level
+aggregate and showed incomplete inverter reporting: Inv24 and Inv25 were
+already absent from the February export, Inv18 and Inv19 stopped reporting
+during February (last observed at 2025-02-13 10:00 in the available February
+material), and all four channels were absent from the March Week 1, Week 2,
+and Week 3 exports. Historical AC exports show that Inv18 and Inv19 had
+reported previously, while Inv24 and Inv25 were sparse and last appeared at
+2024-10-02 08:15 and 2024-09-27 01:20 respectively. Consequently, the
+February and March plant power and energy values in the full master are
+derived by summing whichever inverter values are present at each timestamp,
+not certified full-plant readings. Each derived row is tagged
+data_source=derived_partial_sum and includes inverter coverage fields so that
+the incomplete observations remain visible. These rows should be treated as
+a documented data-availability limitation and must not be interpreted as
+equivalent in certainty to the verified January aggregate readings.

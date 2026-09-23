@@ -1,0 +1,11 @@
+Objective 3 determined market commitments for the 12:00-13:00 interval using the confirmed XGBoost forecasts and the empirical seven-observation March Week 1 midday error distribution from Objective 2. March 3, 2025 was selected as the headline day because it had the highest daytime inverter coverage in the week (78.30% mean); all seven days are provided in week1_daily_appendix.csv.
+
+The scenarios are risk-ratio scenarios, not increasing total stakes: Conservative uses Cu=5 and Co=15 KSh/kWh (q*=0.25), Balanced uses Cu=10 and Co=10 KSh/kWh (q*=0.50), and Aggressive uses Cu=15 and Co=5 KSh/kWh (q*=0.75). In every scenario Cu+Co=20 KSh/kWh.
+
+Commitment was calculated as B*=forecast energy plus the q*-quantile of the midday forecast-error distribution, floored at zero and capped at 350872 W / 350.872 kWh. The capacity cap is a provisional soft cap based on the observed maximum, not the true rated plant capacity, and must be replaced when the authoritative rating is supplied.
+
+The energy price of KSh 15/kWh is an illustrative assumption, not a verified Strathmore tariff, feed-in rate, or settlement price. As of 2026, Kenya Power base commercial/domestic rates plus fuel and forex adjustments typically push effective delivered electricity prices somewhat above KSh 15/kWh; this is therefore a conservative round placeholder, not an upper-bound estimate. Actual Strathmore settlement or feed-in pricing may differ and should replace it when confirmed.
+
+Shortfall=max(commitment-actual,0) and surplus=max(actual-commitment,0) were used only for ex-post evaluation. Imbalance cost=Co*shortfall+Cu*surplus. Net economic outcome=illustrative energy revenue minus imbalance cost. Actual generation did not determine the commitment.
+
+The midday error distribution contains only seven observations, so the commitments are scenario calculations with substantial quantile uncertainty. March production totals are derived_partial_sum values with approximately 77% average daytime inverter coverage, rather than certified full-plant readings. The economic results should therefore be interpreted as provisional, scenario-based results.

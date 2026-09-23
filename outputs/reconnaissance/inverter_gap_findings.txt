@@ -1,0 +1,48 @@
+INVERTER DATA GAP FINDINGS
+
+Scope
+The February and March 2025 production exports were inspected at their native
+5-minute resolution. The confirmed plant-level aggregate columns are not
+present in these files; they contain individual inverter channels instead.
+No inverter-summing rule has been applied.
+
+Affected channels
+- Inv18 and Inv19 were populated in historical AC production exports, with
+  the last observed values in the available pre-February/February material at
+  2025-02-13 10:00.
+- Inv24 was populated only sparsely in historical AC production exports, with
+  the last observed value at 2024-10-02 08:15.
+- Inv25 was populated only sparsely in historical AC production exports, with
+  the last observed value at 2024-09-27 01:20.
+- Inv24 and Inv25 are completely empty in the February 2025 production
+  exports. Inv18 and Inv19 stop reporting during February and all four
+  channels are completely empty in the March Week 1, Week 2, and Week 3
+  production exports.
+
+March 2025 completeness
+Each March file contains 2,016 five-minute intervals. All 26 channels are
+missing at least one value at every timestamp; therefore the all-26-required
+option leaves zero usable intervals.
+
+                         Any reported   At least 22   At least 24   All 26
+March Week 1 (2,016)           1,094          830           0           0
+March Week 2 (2,016)           1,616            0           0           0
+March Week 3 (2,016)           1,051            0           0           0
+
+The "any reported" count means at least one inverter power value is populated.
+The 22- and 24-channel counts are equal-count diagnostics only, not installed
+capacity thresholds. Installed capacity per inverter was not present in the
+exports, so a true 90-percent-capacity rule cannot yet be calculated.
+
+Interpretation and limitation
+The pattern is consistent with an incomplete or changed production export,
+although the plant data manager may confirm that some channels were offline
+for maintenance. This is an infrastructure/data-availability limitation, not
+a justified reason to silently replace missing inverter values with zero or
+to sum partial inverter output. A corrected export or maintenance confirmation
+is required before extending the master dataset into February or March 2025.
+
+Current modelling boundary
+The provisional master uses only plant-level aggregate production columns for
+January 2024 through January 2025. It does not include individual inverter
+columns and does not determine the February/March production target.

@@ -1,0 +1,42 @@
+Objective 2 quantified uncertainty for the confirmed XGBoost model.
+
+Primary result: genuine March Week 1 out-of-sample forecasts, daytime window
+06:00-18:59, 91 daytime observations.
+Supplementary result: nine-origin, seven-day rolling out-of-fold XGBoost
+forecasts from Objective 1, 819 daytime observations.
+
+Forecast error was defined as e_t = actual - forecast. Relative uncertainty
+was calculated against the absolute forecast value. Capacity-relative
+uncertainty is intentionally pending because the plant rated capacity has not
+yet been verified from an authoritative source. The placeholder is recorded
+in uncertainty_table.csv and must be filled without changing the other
+results once rated capacity is supplied.
+
+The primary March Week 1 daytime MBE was -4268.21 W and
+the error standard deviation was 28911.61 W.
+The empirical 80%, 90%, and 95% error intervals are saved in the summary
+tables. Normal-approximation intervals are included for comparison.
+
+The separate 12:00-13:00 analysis contains 7 daytime test
+observations. This is a small sample and its empirical quantiles should be
+treated as descriptive rather than stable population estimates. The
+supplementary rolling backtest is the stronger sample-size robustness check,
+but it is not a replacement for the genuine March test-week result.
+
+The primary March Week 1 bias was negative (-4,268 W), whereas the larger
+9-origin backtest bias was positive (+8,860 W), and the seven-observation
+12:00-13:00 slice was also positive (+11,805 W). This disagreement is not
+enough to claim a definite seasonal change: the March-week estimate is noisy,
+and its sampling uncertainty is large relative to its small bias. However, the
+larger backtest provides evidence that the model more commonly underpredicted
+in the historical validation periods, while March Week 1 showed a small
+opposite-direction bias. The evidence therefore supports reporting a possible
+period-specific difference, or sampling/data-condition variation, without
+attributing it specifically to changing seasonal irradiance patterns. The
+partial inverter coverage in March is an additional limitation when comparing
+these bias estimates.
+
+March Week 1 plant totals are derived_partial_sum values with approximately
+77% average daytime inverter coverage. Therefore, the measured errors are
+relative to best-available partial-coverage actuals, not certified full-plant
+readings.

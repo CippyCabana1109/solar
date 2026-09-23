@@ -1,0 +1,74 @@
+Enabling Solar PV Integration into Competitive Energy Markets through
+Next-Day Forecasting
+
+Objective of the Analysis
+
+Complete the comparative evaluation of three forecasting models using
+real production and weather data to determine the most accurate next-day
+solar PV generation prediction approach.
+
+Data
+
+- PV inverter production data: January 2024 – March 2025
+
+- Weather data: NASA POWER (irradiance, temperature, wind speed,
+  humidity)
+
+- Single synchronized master dataset
+
+- Same dataset used for all models
+
+Models to Implement
+
+1.  SARIMAX
+
+2.  XGBoost
+
+3.  Prophet
+
+The three standalone models shall first be evaluated using the same test
+dataset and performance metrics. The two best-performing standalone
+models shall then be selected for hybridization.
+
+Two hybrid configurations shall be developed by reversing the primary
+and residual/correction roles of the selected models. For example, if
+XGBoost and Prophet are the two best standalone models:
+4. XGBoost–Prophet Hybrid
+5. Prophet–XGBoost Hybrid
+
+Training & Testing Structure
+
+- Train models using historical data (Jan 2024 – Feb 2025)
+
+- Test on one unseen week in March 2025
+
+- Use rolling next-day forecasting approach
+
+- No data leakage
+
+Evaluation Metrics (Same for all models)
+
+- MAE
+
+- RMSE
+
+- sMAPE (or daytime MAPE)
+
+- R² (optional)
+
+All metrics computed on the same test week.
+
+Required Outputs
+
+1.  Model performance comparison table
+
+2.  Actual vs Predicted plots (test week)
+
+3.  Error comparison chart
+
+Final Goal:
+
+Rank the five forecasting approaches according to their next-day
+prediction performance and identify the best-performing model. The
+first-ranked model shall be carried forward to Objective 2 for
+quantification of forecast uncertainty.

@@ -1,0 +1,28 @@
+Objective 1 genuine test-week evaluation used March Week 1 (2025-03-01 to 2025-03-07) and the fixed daytime window 06:00-18:59, with 91 daytime observations. This is a genuine test-week result, not cross-validation.
+
+Final daytime test-week ranking:
+
+Rank  Model                    MAE (W)  RMSE (W)  sMAPE (%)  R2
+1     XGBoost                  16510    29067     27.09      0.920
+2     XGBoost-SARIMAX Hybrid   26772    40689     36.30      0.843
+3     SARIMAX                  39894    51396     53.55      0.750
+4     SARIMAX-XGBoost Hybrid   70032    85511     58.35      0.307
+5     Prophet                  94256    97490    112.81      0.099
+
+XGBoost was the overall winner. Prophet's low test-week R2 is a genuine
+out-of-sample result: the saved Prophet artifact used the six expected NASA
+weather regressors, the test regressors were complete and within the training
+ranges, and training and test plant power used the same Watt scale. Prophet
+followed the daylight shape but underpredicted the March peak and produced
+negative dawn/evening forecasts, which explains its weak test performance.
+
+The two hybrids used XGBoost and SARIMAX, the two best standalone models on
+this test week. Their residual correctors were trained only from out-of-fold
+validation residuals. Both hybrids underperformed XGBoost on this test week.
+
+March Week 1 plant totals are derived_partial_sum values averaging about 77%
+inverter coverage during daytime hours, so results represent best-available
+data rather than certified full-plant readings. Inv18 and Inv19 stopped
+reporting during February, while Inv24 and Inv25 were absent from the
+February export; all four were absent from the March exports. This is a
+material limitation of the test data.

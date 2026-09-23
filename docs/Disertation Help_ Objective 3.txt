@@ -1,0 +1,130 @@
+OBJECTIVE 3 — Determination of Market Energy Commitment
+
+Objective:
+To determine market commitment quantities from next-day solar PV
+forecasts while accounting for forecast uncertainty and imbalance costs.
+
+1. Input from Objectives 1 and 2
+
+Use the best-performing forecasting model identified under Objective 1
+and select the forecast for a single one-hour delivery interval:
+12:00–13:00.
+
+Let:
+
+Ê₁₂ = forecast PV energy for 12:00–13:00 (kWh)
+
+The forecast must be an actual output of the selected model, not an
+assumed/hypothetical value.
+
+From Objective 2, obtain the empirical forecast-error distribution for
+the corresponding interval:
+
+e_(t) = E_(t) − Ê_(t)
+
+including the relevant residual quantiles.
+
+2. Determine the Market Commitment
+
+Define the economic consequences of the commitment decision as:
+
+C_(u) = cost of under-commitmentC_(o) = cost of over-commitment
+
+where under-commitment represents potential income forgone from
+available energy that was not committed, while over-commitment
+represents shortfall/imbalance exposure when committed energy exceeds
+available generation. This is consistent with the Newsvendor
+interpretation already established in the dissertation.
+
+Calculate the Newsvendor critical fractile:
+
+$$\boxed{q^{*} = \frac{C_{u}}{C_{u} + C_{o}}}
+$$
+
+Use this critical fractile to select the corresponding quantile from the
+forecast distribution:
+
+$$\boxed{B_{12}^{*} = F_{12}^{- 1}\left( q^{*} \right)}
+$$
+
+where:
+
+B₁₂^(*) = committed energy for 12:00–13:00 (kWh)
+
+The commitment should therefore be determined from the forecast +
+quantified uncertainty + market costs, rather than by applying an
+arbitrary fixed percentage to the forecast.
+
+3. Evaluate the Commitment
+
+After determining B₁₂^(*), compare it with the actual measured
+Strathmore energy generation for the same 12:00–13:00 interval:
+
+E₁₂^(actual)
+
+Calculate:
+
+Shortfall = max (B₁₂^(*), −E₁₂^(actual)0)Surplus = max (E₁₂^(actual), −B₁₂^(*)0)
+
+The actual generation is used only for ex-post evaluation and must not
+be used to determine the commitment.
+
+4. Sensitivity to Imbalance Costs
+
+Repeat the commitment calculation for three market-cost scenarios:
+
+  ----------------------------------------------------------------------------------------
+  Scenario         C_(u)        C_(o)        Critical    Committed   Commitment/Forecast
+                                             Fractile    Energy      (%)
+                                                         (kWh)       
+  ---------------- ------------ ------------ ----------- ----------- ---------------------
+  Low              Assumption   Assumption   Calculate   Calculate   Calculate
+  imbalance-cost                                                     
+
+  Base case        Assumption   Assumption   Calculate   Calculate   Calculate
+
+  High             Assumption   Assumption   Calculate   Calculate   Calculate
+  imbalance-cost                                                     
+  ----------------------------------------------------------------------------------------
+
+The exact C_(u)and C_(o)assumptions should be explicitly documented and
+justified. Since the dissertation uses assumed market prices and
+imbalance parameters rather than historical market settlement data, the
+resulting commitments should be described as scenario-based.
+
+5. Required Final Result
+
+Prepare one consolidated results table:
+
+  ---------------------------------------------------------------------
+  Parameter                    Low-Cost     Base         High-Cost
+                               Scenario     Scenario     Scenario
+  ---------------------------- ------------ ------------ --------------
+  12:00–13:00 forecast energy  X            X            X
+  (kWh)                                                  
+
+  Forecast uncertainty /       X            X            X
+  relevant quantile                                      
+
+  Critical Fractile            X            X            X
+
+  Committed energy (kWh)       X            X            X
+
+  Commitment as % of forecast  X%           X%           X%
+
+  Actual Strathmore energy     X            X            X
+  (kWh)                                                  
+
+  Shortfall energy (kWh)       X            X            X
+
+  Surplus energy (kWh)         X            X            X
+
+  Imbalance cost (KSh)         X            X            X
+
+  Net economic outcome (KSh)   X            X            X
+  ---------------------------------------------------------------------
+
+Expected conclusion: The analysis should quantitatively demonstrate how
+the market energy commitment for the same 12:00–13:00 forecast changes
+as forecast uncertainty and the relative economic consequences of over-
+and under-commitment change.

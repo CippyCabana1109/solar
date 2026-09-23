@@ -1,0 +1,117 @@
+DISSERTATION ASSUMPTIONS AND LIMITATIONS
+
+Purpose
+This document brings together the assumptions, placeholders and limitations
+identified in Objectives 1, 2 and 3. It should be read alongside the results
+tables. The points below do not invalidate the analysis; they define the
+scope in which its findings should be interpreted.
+
+Objective 1: Next-day PV forecasting
+
+1. The final comparison uses one genuine unseen test week: 1-7 March 2025.
+   The reported daytime evaluation window is 06:00-18:59 and contains 91
+   hourly observations. Results from a single week may not represent all
+   seasons, weather conditions or plant operating conditions.
+
+2. January 2024-January 2025 production data use verified plant-level
+   aggregate production fields. February and March 2025 exports did not
+   contain a certified plant-level aggregate. Their production values were
+   derived by summing the inverter values that were available at each time.
+   These rows are labelled derived_partial_sum and are not equivalent in
+   certainty to verified full-plant readings.
+
+3. The derived February/March production data had about 77% average daytime
+   inverter coverage. Inv24 and Inv25 were absent in February; Inv18 and
+   Inv19 stopped reporting during February; and all four were absent from the
+   March exports. The March test results therefore describe the best available
+   partial-coverage data rather than certified total plant generation.
+
+4. Installed capacity by inverter was not available. It was therefore not
+   possible to apply a true capacity-weighted completeness threshold or to
+   determine whether the missing channels represented offline equipment,
+   changed reporting, or another data issue. A corrected export or maintenance
+   confirmation would strengthen future analysis.
+
+5. XGBoost was the best standalone model on this test week. The two hybrid
+   models used XGBoost and SARIMAX, with residual correctors trained from
+   out-of-fold validation residuals only. Both hybrids underperformed the
+   XGBoost standalone model on the final test week. Hybridisation should not
+   therefore be presented as an automatic improvement.
+
+6. Prophet followed the general daylight pattern but underpredicted the March
+   peak and produced negative predictions at dawn and evening. Its weaker
+   performance is a result for this dataset and test period, rather than a
+   general statement that Prophet is unsuitable for all solar PV forecasts.
+
+Objective 2: Forecast uncertainty
+
+1. Forecast error is defined as actual generation minus forecast generation.
+   Positive error means the model under-forecast; negative error means the
+   model over-forecast.
+
+2. The primary uncertainty estimates use the same 91 daytime observations
+   from the March Week 1 test period. The supplementary rolling backtest has
+   819 daytime observations across nine seven-day origins, but it is a
+   robustness check and does not replace the genuine March test-week result.
+
+3. The 12:00-13:00 error distribution used for the commitment analysis has
+   only 7 observations, one for each day in the test week. Its percentiles and
+   quantiles are descriptive and have substantial sampling uncertainty; they
+   should not be treated as stable population estimates.
+
+4. The March primary bias, the larger rolling-backtest bias and the 12:00-13:00
+   bias differ in direction. This is insufficient evidence to claim a seasonal
+   effect. The difference may reflect sampling variation, period-specific
+   conditions or partial inverter coverage.
+
+5. Relative uncertainty was calculated against the absolute forecast value.
+   Capacity-relative uncertainty was not calculated because an authoritative
+   plant rated capacity in kW or kWp was not available. This should be added
+   only after the true rated capacity is confirmed.
+
+6. March forecast errors are measured against derived partial-coverage actual
+   generation, not certified full-plant output. The approximately 77% daytime
+   inverter coverage is therefore also a limitation on the uncertainty
+   estimates.
+
+Objective 3: Market energy commitment
+
+1. Commitments are scenario-based, not historical market-settlement results.
+   The cost assumptions are: Conservative, Cu = KSh 5/kWh and Co = KSh
+   15/kWh, giving q* = 0.25; Balanced, Cu = KSh 10/kWh and Co = KSh 10/kWh,
+   giving q* = 0.50; and Aggressive, Cu = KSh 15/kWh and Co = KSh 5/kWh,
+   giving q* = 0.75. In each scenario, Cu + Co = KSh 20/kWh. These values
+   express different relative consequences of under- and over-commitment and
+   must be replaced or justified with actual market rules where available.
+
+2. The KSh 15/kWh energy price is an illustrative assumption, not a verified
+   Strathmore tariff, feed-in rate or settlement price. As of 2026, Kenya
+   Power base commercial/domestic rates plus fuel and forex adjustments
+   typically put effective delivered electricity prices somewhat above KSh
+   15/kWh. It is therefore a conservative round placeholder, not an
+   upper-bound estimate. Confirmed Strathmore settlement or feed-in pricing
+   should replace it when available.
+
+3. Commitment is floored at zero and capped at 350,872 W (350.872 kWh for the
+   one-hour interval). This is a provisional soft cap based on observed data,
+   not the plant's true rated capacity. It must be replaced once the
+   authoritative plant rating is available.
+
+4. The headline calculation uses 3 March 2025 because it had the highest mean
+   daytime inverter coverage in the test week, 78.30%. The full seven-day
+   appendix is retained so that the headline day is not interpreted as the
+   only possible operational result.
+
+5. Actual generation was used only after the commitment decision to calculate
+   shortfall, surplus and illustrative imbalance cost. It was not used to set
+   the commitment.
+
+6. The commitment quantiles come from the 7-observation midday error sample.
+   Together with the partial March inverter coverage, this means that the
+   economic outcomes are provisional scenario calculations rather than
+   bankable market-settlement estimates.
+
+7. The commitment results use the same partial-coverage March production data
+   as Objectives 1 and 2. They should be updated if certified full-plant
+   February/March production data, rated capacity, tariff information or
+   market imbalance rules become available.

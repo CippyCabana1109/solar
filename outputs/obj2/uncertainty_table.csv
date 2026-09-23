@@ -1,0 +1,9 @@
+Uncertainty Measure,Result,Interpretation
+Mean Error / Bias,-4268.206493499633,Average actual-minus-forecast error; positive means under-forecasting.
+Error Standard Deviation,28911.605878483428,Typical dispersion of daytime errors around the bias.
+Relative Uncertainty,-0.8688889612416995,Median forecast-relative error; capacity-relative value pending rated capacity.
+80% uncertainty interval,-29929.11 to 20422.99 W,Empirical daytime error range containing the central 80% of March test errors.
+90% uncertainty interval,-46452.74 to 26868.74 W,Empirical daytime error range containing the central 90% of March test errors.
+95% uncertainty interval,-61460.53 to 33852.81 W,Empirical daytime error range containing the central 95% of March test errors.
+Capacity-relative uncertainty,PENDING_RATED_CAPACITY,Cannot calculate until the plant rated capacity in kW or kWp is provided.
+12:00-13:00 error sample,7,"Small primary test-week sample; one observation per day, so quantiles are unstable."
